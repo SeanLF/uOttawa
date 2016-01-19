@@ -1,0 +1,73 @@
+i)		S -> mG
+ii)		S -> mKp
+iii)	G -> nG
+iv)		G -> n
+v)		K -> nKr
+vi)		K -> mn
+
+a) Build the canonical LR(0)
+W0{	S' -> .S
+	S -> .mG
+	S -> .mKp	}
+W1{	S' -> S.	}
+W2{	S -> m.G
+	S -> m.Kp
+	G -> .nG
+	G -> .n
+	K -> .nKr
+	K -> .mn	}
+W3{	S -> mG.	}
+W4{	S -> mK.p	}
+W5{	G -> n.G
+	G -> n.
+	G -> .nG
+	G -> .n
+	K -> n.Kr
+	K -> .nKr
+	K -> .mn	}
+W6{	K -> m.n	}
+W7{	S -> mKp.	}
+W8{	G -> nG.	}
+W9{	K -> nK.r	}
+W10{K -> mn.	}
+W11{K -> nKr.	}
+
+b) Build the table	
+Follow(S) = {$}
+Follow(G) = {n,$}
+Follow(K) = {p, r}
+|:------------------------------------------------:|
+|       | Action | 	Goto			   			   |
+|:-----:|:------:|:-------------------------------:|
+| State | m      | n    | r   | $      | S | G | K |
+|:-----:|:------:|:----:|:---:|:------:|:-:|:-:|:-:|
+| 0     | S2     |      |     |        | 1 |   |   |
+| 1     |        |      |     | Accept |   |   |   |
+| 2     | S6     | S5   |     |        |   | 3 | 4 |
+| 3     |        |      |     | Ri     |   |   |   |
+| 4     |        |      | S7  |        |   |   |   |
+| 5     | S6     | S5   |     | Riv    |   | 8 | 9 |
+| 6     |        | S10  |     |        |   |   |   |
+| 7     |        |      |     | Rii    |   |   |   |
+| 8     | Riii   |      |     | Riii   |   |   |   |
+| 9     |        |      | S11 |        |   |   |   |
+| 10    |        | Rvi  | Rvi | 	   |   |   |   |
+| 11    |        | Rv   | Rv  |        |   |   |   |
+|:------------------------------------------------:|
+
+c) Show each step of the LR(0) parse
+| Stack                  | Input     | Action           |
+|:-----------------------|:----------|:-----------------|
+| 0                      | mnnmnrrp$ | S2               |
+| 0 m 2                  | nnmnrrp$  | S5               |
+| 0 m 2 n 5              | nmnrrp$   | S5               |
+| 0 m 2 n 5 n 5          | mnrrp$    | S6               |
+| 0 m 2 n 5 n 5 m 6      | nrrp$     | S10              |
+| 0 m 2 n 5 n 5 m 6 n 10 | rrp$      | Rvi + GoTo(5,K)  |
+| 0 m 2 n 5 n 5 K 9      | rrp$      | S11              |
+| 0 m 2 n 5 n 5 K r 11   | rp$       | Rv + GoTo(5, K)  |
+| 0 m 2 n 5 n 5 K 9      | rp$       | S11              |
+| 0 m 2 n 5 n 5 K 9 r 11 | p$        | Rv + GoTo(2, K)  |
+| 0 m 2 K 4              | p$        | S7               |
+| 0 m 2 K 4 p 7          | $         | Rii + GoTo(0, S) |
+| 0 S 1                  | $         | Accept           |

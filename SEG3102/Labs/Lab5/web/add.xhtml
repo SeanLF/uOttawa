@@ -1,0 +1,111 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <body>
+
+     <ui:composition template="./template.xhtml">
+
+      <ui:define name="content">
+        <h1>Employee Information</h1>
+        <f:view>
+            <h:form prependId="false">
+                <h:panelGrid columns="3">
+                    <h:outputText value="Employee Id"></h:outputText>
+                    <h:inputText id="id" value="#{empData.id}" required="true" requiredMessage="Please enter Employee Id">
+                        <f:validator validatorId="employeeNumberValidator"/>
+                    </h:inputText>
+                    <h:message id="idMsg" for="id" errorStyle="color:red; display:block"/>
+                    
+                    <h:outputText value="First Name"></h:outputText>
+                    <h:inputText id="name" value="#{empData.name}" required="true" requiredMessage="Please enter Employee Name">
+                    </h:inputText>
+                    <h:message id="nameMsg" for="name" errorStyle="color:red; display:block" styleClass="errorMessage"/>
+                    
+                    <h:outputText value="Last Name"></h:outputText>
+                    <h:inputText id="lastname" value="#{empData.lastName}" 
+                                 required="true" 
+                                 requiredMessage="Please enter Last Name">
+                    </h:inputText>
+                    <h:message id="lastnameMsg" for="lastname" errorStyle="color:red; display:block" styleClass="errorMessage"/>
+                    
+                    <h:outputText value="Street Number"></h:outputText>
+                    <h:inputText id="streetnumber" value="#{addressData.streetnumber}" 
+                                 required="true" 
+                                 requiredMessage="Please enter a street number">
+                        <f:validator validatorId="numberValidator"/>
+                    </h:inputText>
+                    <h:message id="streetnumberMsg" for="streetnumber" errorStyle="color:red; display:block" styleClass="errorMessage"/>
+                    
+                    <h:outputText value="Street Name"></h:outputText>
+                    <h:inputText id="streetname" value="#{addressData.streetname}" 
+                                 required="true" 
+                                 requiredMessage="Please enter a street name">
+                    </h:inputText>
+                    <h:message id="streetnameMsg" for="streetname" errorStyle="color:red; display:block" styleClass="errorMessage"/>
+                    
+                    <h:outputText value="Unit Number"></h:outputText>
+                    <h:inputText id="unitnumber" value="#{addressData.unit}" 
+                                 required="false" 
+                                 requiredMessage="Please enter a unit number">
+                    </h:inputText>
+                    <h:message id="unitnumberMsg" for="unitnumber" errorStyle="color:red; display:block" styleClass="errorMessage"/>
+                    
+                    <h:outputText value="City"></h:outputText>
+                    <h:inputText id="city" value="#{addressData.city}" 
+                                 required="true" 
+                                 requiredMessage="Please enter a city">
+                    </h:inputText>
+                    <h:message id="cityMsg" for="city" errorStyle="color:red; display:block" styleClass="errorMessage"/>
+                    
+                    <h:outputText value="Province"></h:outputText>
+                    <h:selectOneMenu id="province" value="#{addressData.province}" 
+                                 required="true" 
+                                 requiredMessage="Please enter a province">
+                        <f:selectItem id="item1" itemLabel="Alberta" itemValue="AB" />
+                        <f:selectItem id="item2" itemLabel="British Columbia" itemValue="BC" />
+                        <f:selectItem id="item3" itemLabel="Manitoba" itemValue="MB" />
+                        <f:selectItem id="item4" itemLabel="New Brunswick" itemValue="NB" />
+                        <f:selectItem id="item5" itemLabel="Newfoundland" itemValue="NL" />
+                        <f:selectItem id="item6" itemLabel="Nova Scotia" itemValue="NS" />
+                        <f:selectItem id="item7" itemLabel="Northwest Territories" itemValue="NT" />
+                        <f:selectItem id="item8" itemLabel="Nunavut" itemValue="NU" />
+                        <f:selectItem id="item9" itemLabel="Ontario" itemValue="ON" />
+                        <f:selectItem id="item10" itemLabel="Prince Edward Island" itemValue="PE" />
+                        <f:selectItem id="item11" itemLabel="Quebec" itemValue="QC" />
+                        <f:selectItem id="item12" itemLabel="Saskatchewan" itemValue="SK" />
+                        <f:selectItem id="item13" itemLabel="Yukon Territory" itemValue="YT" />
+                    </h:selectOneMenu>
+                    <h:message id="provinceMsg" for="province" errorStyle="color:red; display:block" styleClass="errorMessage"/>
+                    
+                    <h:outputText value="Postal Code"></h:outputText>
+                    <h:inputText id="postal" value="#{addressData.postal}" 
+                                 required="true" 
+                                 requiredMessage="Please enter a postal code">
+                        <f:validator validatorId="postalCodeValidator"/>
+                    </h:inputText>
+                    <h:message id="postalMsg" for="postal" errorStyle="color:red; display:block" styleClass="errorMessage"/>
+                    
+                </h:panelGrid>
+                
+                <h:commandButton value="Add" type="command"  actionListener="#{lookupControl.add}">
+                   <f:ajax execute="id name lastname streetnumber streetname unitnumber city province postal" render="status idMsg nameMsg lastnameMsg streetnumberMsg streetnameMsg unitnumberMsg cityMsg provinceMsg postalMsg"/>
+                </h:commandButton>
+                <h:commandButton value="Cancel" type="reset" />
+                
+                <div>
+                    <hr/>
+                    <hr/>
+                <h:outputText  style="color:royalblue; font-size: large; font-weight: bold" id="status" value="#{empData.addstatus}"/>
+                </div>
+            </h:form>
+        </f:view>
+      </ui:define>
+
+    </ui:composition>
+
+    </body>
+</html>

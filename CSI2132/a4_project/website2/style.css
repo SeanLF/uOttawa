@@ -1,0 +1,147 @@
+
+@font-face { font-family: 'Helvetica Neue LT Std'; src: url('font.otf') format('truetype'); }
+
+html {
+    font-family:  "Helvetica Neue LT Std","Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    background-image: url('images/background3.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+	height:100%;
+}
+.header-div {
+    color: #fff;
+    width: 800px;
+    margin: 40px auto 40px auto;
+    text-align: center;   
+}
+.header-bigtitle {
+    font-size: 42px;
+    font-weight: bold;
+}
+.header-subtitle {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.content-container {
+    width: 800px;
+    background-color: #fff;
+    margin: 0 auto;
+}
+.content-left {
+    float: left;
+    width: 200px;
+    margin-left: 0px;    
+}
+.content-right {
+    float: right;
+    width: 580px;
+    margin-right: 0px;
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    min-height: 350px;  
+}
+.content-left a {
+    color: #000;
+    width: 160px;
+    background-color: #E6E6E6;
+    border-radius: 5px;
+    padding: 15px;
+    display: block;
+    margin-bottom: 10px;
+    text-decoration: none;
+    border-left: 3px #000 solid;
+}
+.tab-active {
+    width: 200px !important;
+    background-color: #fff !important;
+    font-weight: bold !important;
+}
+.content-right a {
+    color: #000;
+}
+h1 {
+    margin: 0px;
+    font-size: 18px;
+}
+h4 {
+    margin: 0px;
+}
+p {
+    line-height: 25px;
+    text-align: justify;
+}
+.result {
+    width: 100%;
+    border-top: 1px #ccc dashed;
+    padding: 10px 0;
+}
+.backbutton {
+    float: right;
+    margin-top: -20px;
+    text-decoration: none;
+}
+
+#playerContainer{
+	background-image:url(images/music.png); 
+	background-repeat-x:no-repeat; 
+	background-repeat-y:no-repeat; 
+	background-repeat:no-repeat; 
+	width:515px; 
+	background-position:inherit inherit; 
+	background-position-x:inherit; 
+	background-position-y:inherit; 
+	background-size:auto; 
+	height:448px;align:center;	
+	margin-left: auto;	
+	margin-right: auto; 
+}
+
+#player{position:relative; 
+	left:19px; 
+	top:91px; 
+	width:92%; 
+	height:65%; 
+	opacity:0.95;
+	align:center;	
+	margin-left: auto;	
+	margin-right: auto;
+}
+.loginbox {
+    width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+.loginbox button {
+    width: 414px;
+    font-size: 18px;
+    padding: 6px;
+}
+.loginbox input[type=text],input[type=password] {
+    padding: 5px;
+    width: 400px;
+    font-size: 18px;
+    border-radius: 5px;
+    background-color: #fff;  
+}
+.error_message {
+    margin: 20px auto;
+    padding: 5px;
+    width: 400px;
+    background-color: #ffcccc;
+    color: #cc0033;
+    border: 2px solid #cc0033;
+    text-align: center;
+    font-weight: bold;
+}
+.success_message {
+    margin: 20px auto;
+    padding: 5px;
+    width: 400px;
+    background-color: #ccffcc;
+    color: #339900;
+    border: 2px solid #339900;
+    text-align: center;
+    font-weight: bold;
+}

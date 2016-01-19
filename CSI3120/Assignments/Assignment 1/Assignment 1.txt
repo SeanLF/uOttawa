@@ -1,0 +1,53 @@
+Question 1
+A.
+The main programming languages that existed at the time that LISP was created were
+- Fortran (1/2) : Fortran is a general-purpose, imperative programming language that is especially suited to numeric computation and scientific computing.
+- Flow-Matic : was the first English-like data processing language
+- Algol 58 was created to be accessible on multiple types of machines, formalized data types, and generalized on many Fortran concepts
+
+B.
+The main programming langauges that existed at the time that Prolog was created were
+- Pascal : largely but not exclusively geared towards teaching, create an efficient language based on "structured programming" concept
+- C : general purpose imperative programming language, originally designed for systems programming
+
+C.
+- Lisp: The main motivation was to develop a list processing language for Artificial Intelligence. Many researchers find that functional programming is a much better approach than imperative programming. Lisp has been used mostly for AI, knowledge based systems, list handling and processing
+Lisp has evolved since its inception and has two main descendants: common Lisp and Scheme. Scheme was created mainly for teaching purposes at MIT. 
+- Prolog: The language has been used for theorem proving, expert systems, as well as natural language processing. Its creation was motivated in part by the desire to reconcile the use of logic as a declarative knowledge representation language with the procedural representation of knowledge that was popular in North America in the late '60-'70s. IBM's Watson was written in several languages, including Prolog.
+
+These two languages were hugely beneficial to the Artificial Intelligence community and presents a new way of thinking to solve problems.
+
+Question 2. Choosing a language
+	problem 1:
+		using Scheme
+			Pros: perfect language for list processing, easy language to learn grammatically
+			Cons: recursiveness of program is difficult to process for a human, no effecient IDEs made for Scheme
+
+		using Java
+			Pros: imperative programming is the easiest to write, familiarity
+			Cons: requires the implementation of a data structure before tackling the problem (trees or lists)
+
+		using Prolog
+			Pros: easier to read and write than scheme, list implementation given
+			Cons: using many rules to achieve the same results, conditions are not expressed as easily, matching rule not effecient way of solving
+
+	problem 2: prolog
+		using Java
+			Pros: writing conditions is an easy process, same as implementing loops
+			Cons: string.Contains will be used an awful lot
+		
+		using Scheme
+			Pros: list processing and artificial intelligence are what this language shines at
+			Cons: grammatically difficult to implement loops and conditions
+			
+		using Prolog
+			Pros: excellent for rule matching, AI tasks such as determining diseases
+			Cons: recursion can be difficult to process for humans, difficulty in implementing conditions and loops
+			
+I think Scheme was a good choice for the first problem for its list processing assets and that it can run imperative programs to perform multiple instructions.
+Prolog was also a good choice for the second problem because we were diagnosing a patient. We were given a set of facts and were required to output the proper diagnosis. This is exactly what prolog was made for.
+
+Using prolog for the first problem would have been difficult: writing facts and rules to the database while running.
+Using scheme for the second problem would have been more difficult but still managable. Scheme is still a good choice for artificial intelligence.
+
+Java was the easy choice for a programmer because writing a set of instructions is easier. However, the complexity of the programs would have been too great.

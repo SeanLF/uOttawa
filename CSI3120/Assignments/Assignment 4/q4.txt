@@ -1,0 +1,4 @@
+1) a is visible from the first scope, and [b,c,d] are visible from the first while scope.
+2) a is visible form the first scope, b from the second scope and [c,d,e] are visible from the second while scope.
+3) a is visible from the first scope, [b,c,d] are visible from the first while scope.
+4) [a,b,c] are visible from the first scope.

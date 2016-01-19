@@ -1,0 +1,33 @@
+type[][][]
+
+access -> type[x][y][z]
+
+For row major order
+location = base_location +
+			(x - min0)(high1 - min1 + 1)(high2 - min2 + 1)(size_of_type) +
+				(y - min1)(high2 - min2 + 1)(size_of_type) +
+					(z - min2)(size_of_type);
+					
+For column major order
+
+stored by depth, then by column, then by row
+i.e
+| xyz |
+|:----|
+| 000 |
+| 100 |
+| 200 |
+| 010 |
+| 110 |
+| 210 |
+| 020 |
+| 120 |
+| 220 |
+| 001 |
+
+access -> type[z][y][x]
+
+location = base_location +
+			(z - min2)(high1 - min1 + 1)(high0 - min0 + 1)(size_of_type) +
+				(y - min1)(high2 - min2 + 1)(size_of_type) +
+					(x - min2)(size_of_type);

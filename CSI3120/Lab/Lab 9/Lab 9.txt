@@ -1,0 +1,21 @@
+3.
+main --> sub1 --> sub2 --> sub3
+3{a,x,w} 2{b,z} 1{y} m{/}
+main --> sub1 --> sub3
+3{a,x,w} 1{y,z} m{/}
+main --> sub2 --> sub3 --> sub1
+1{a,y,z} 3{x,w} 2{b} m{/}
+main --> sub3 --> sub1
+1{a,y,z} 3{x,w} m{/}
+main --> sub1 --> sub3 --> sub2
+2{a,b,z} 3{x,w} 1{y} m{/}
+main --> sub3 --> sub2 --> sub1
+1{a,y,z} 2{b} 3{x,w} m{/}
+
+4.
+a] (((a * b) - 1) + c)
+b] ((a * (b - 1)) / c) mod d
+c] ((a - b) / c) & (((d * e) / a) - 3)
+d] ((-a) or ((c = d) and e))
+e] ((a > b) xor (c or (d <= 17)))
+f] -(a + b)

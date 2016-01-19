@@ -1,0 +1,49 @@
+Q1
+
+Umple code:
+
+_link_
+
+http://cruise.eecs.uottawa.ca/umpleonline/?text=class%20Committee%7B%0A%20%20int%20level%3B%0A%20%20String%20name%3B%0A%20%20*%20superior%20--%20*%20Committee%20inferior%3B%0A%20%20*%20--%201..*%20Person%20member%3B%0A%20%20*%20--%20*%20Decision%3B%0A%7D%0A%0Aclass%20Person%7B%0A%20%20String%20name%3B%0A%20%20Date%20start%3B%0A%20%20Date%20stop%3B%0A%20%201..*%20creator%20--%201..*%20Version%3B%0A%7D%0A%0Aclass%20Decision%7B%0A%20%20int%20level%3B%0A%20%20String%5B%5D%20summary%3B%0A%20%20String%5B%5D%20condition%3B%0A%20%20String%20type%3B%0A%20%20*%20--%201..*%20Person%20proposal%3B%0A%20%201..*%20--%20*%20Document%3B%0A%7D%0A%0Aclass%20Version%7B%0A%20%20Date%20date%3B%0A%7D%0A%0Aclass%20Document%7B%0A%20%20String%20iD%3B%0A%20%20String%20title%3B%0A%20%20String%20type%3B%0A%20%201%20--%201..*%20Version%3B%0A%7D%2F%2F%24%3F%5BEnd_of_model%5D%24%3F%0A%0Aclass%20Committee%0A%7B%0A%20%20position%20291%2095%20109%2077%3B%0A%20%20position.association%20Committee__Person%3Amember%2044%2C80%20107%2C0%3B%0A%20%20position.association%20Committee__Decision%200%2C56%20128%2C0%3B%0A%7D%0A%0Aclass%20Person%0A%7B%0A%20%20position%20292%20227%20109%2094%3B%0A%20%20position.association%20Person%3Acreator__Version%20111%2C16%200%2C18%3B%0A%7D%0A%0Aclass%20Decision%0A%7B%0A%20%20position.association%20Decision__Person%3Aproposal%20136%2C18%200%2C19%3B%0A%20%20position.association%20Decision__Document%20128%2C107%200%2C0%3B%0A%20%20position%2033%20254%20128%20111%3B%0A%7D%0A%0Aclass%20Document%0A%7B%0A%20%20position%20294%20440%20109%2094%3B%0A%20%20position.association%20Document__Version%20103%2C0%200%2C59%3B%0A%7D%0A%0Aclass%20Version%0A%7B%0A%20%20position%20523%20251%20109%2060%3B%0A%7D
+
+class Committee{
+  int level;
+  String name;
+  * superior -- * Committee inferior;
+  * -- 1..* Person member;
+  * -- * Decision;
+}
+
+class Person{
+  String name;
+  Date start;
+  Date stop;
+  1..* creator -- 1..* Version;
+}
+
+class Decision{
+  int level;
+  String[] summary;
+  String[] condition;
+  String type;
+  * -- 1..* Person proposal;
+  1..* -- * Document;
+}
+
+class Version{
+  Date date;
+}
+
+class Document{
+  String iD;
+  String title;
+  String type;
+  1 -- 1..* Version;
+}
+
+Q2:
+
+mergeDecision()
+splitDecision()
+determineImportance()
+requestChanges()

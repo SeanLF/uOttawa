@@ -1,0 +1,3 @@
+Follow(P') = Follow(P) = {$}
+Follow(T) = Follow (P) + {;} = {$, ;}
+Follow(M) = {$, ;, }, else }

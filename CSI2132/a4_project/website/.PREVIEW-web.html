@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html><head>
+		<title> IRDb | the Internet Radio Database </title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" > 
+		<link href="website.css" rel="stylesheet" media="all" type="text/css" >
+	</head>
+	
+	<body class="body" >
+		<div id="header" >
+			<div style="width:15%; float:left; " ><br></div>
+			<div style="float:left; " >
+				Internet radio database!
+			</div>
+			<div style="float:right; " ><br></div>
+			<div style="float:right; " >
+				<a href="javascript:void(0)" onclick="document.getElementById('light').style.display='block';document.getElementById('fade').style.display='block'" >
+					<img src="pics/info.png" style="width:36px; float:right; right:15px; top:7px; position:relative; " >
+				</a>
+				<a href="javascript:void(0)" onclick="document.getElementById('light2').style.display='block';document.getElementById('fade').style.display='block'" >
+					<img src="pics/login.png" style="width:50px; float:right; right:80px; top:5px; position:relative; " >
+				</a>
+			</div>
+		</div>
+		<div id="wrapper" >
+			<div id="leftcolumn" >	
+				<h5 id="left" > Table of contents </h5> 			<br>
+				<div id="contentWrapper" > 
+					<div id="topLeft" >
+						<dl id="left" >
+							<dt><strong>Show &amp; playsheets:</strong></dt>
+							<dd> <font size="4" > <a href="query1.php" >Get show information.</a> </font> </dd>
+							<dd> <font size="4" > <a href="query2.php" >What's playing on what?</a> </font> </dd>
+							<dd> <font size="4" > <a href="query3.php" >Hosts per category.</a> </font> </dd>
+							<dd> <font size="4" > <a href="query5.php" >Avg host rating per categories.</a> </font> </dd>
+						</dl>
+					</div>
+					<div id="topRight" >
+						<dl id="left" >
+							<dt><strong>Songs, Artists, Bands and Albums:</strong></dt>
+							<dd> <font size="4" > <a href="queryF.php" >Album count per Music Label.</a> </font> </dd>
+							<dd> <font size="4" > <a href="queryG.php" >Find songs that weren't played during...</a> </font> </dd>
+							<dd> <font size="4" > <a href="queryI.php" >Most played CanCon artists...</a> </font> </dd>
+							<dd> <font size="4" > Currently,  
+									<!--?php 				# WOW! QUERY J IS BUILT IN --- HOLY SMOKES!
+										include('config.php');
+										$instrumental = "SELECT count(instrumental), 
+											(select count(*) from project.song where instrumental=false) 
+											from project.song S where instrumental=true";
+										$instrB=pg_query($dbconn, $instrumental);
+										if(!$instrB){
+											die("error in sql query: ".pg_last_error());
+										}
+											if(pg_num_rows($instrB)-->0){
+												$rowI = pg_fetch_array($instrB);
+												if($rowI[0]&gt;=$rowI[1])
+													echo (" instrumental ");
+												else echo (" non-instrumental ");
+											} else echo(" we don't have enough info to determine which ");
+									?&gt; songs are more popular.
+								</font> </dd>
+							
+						</dl>
+					</div>	
+					<div id="bottomLeft" >
+						<dl id="left" >
+							<dt><strong>Guests and Hosts:</strong></dt>
+							<dd> <font size="4" > <a href="queryK.php" >Most featured guests.</a> </font> </dd>
+							<dd> <font size="4" > <a href="queryM.php" >Greatest host salary.</a> </font> </dd>
+						</dl>
+					</div>
+					<!--			<div id="bottomRight" >
+						<dl id="left" >
+							<dt><strong>D:</strong></dt>
+							<dd> <font size="4" > <a href="" >Something as.</a> </font> </dd>
+						</dl>
+					</div> -->
+				</div>
+			</div>
+			<div id="content" style="margin-top:70px; " >
+				<div style="background-image:url(pics/music.png); background-repeat-x:no-repeat; background-repeat-y:no-repeat; background-repeat:no-repeat; width:515px; background-position:inherit inherit; background-position-x:inherit; background-position-y:inherit; background-size:auto; height:448px; " >
+					<iframe width="90%" height="300px" scrolling="yes" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/28444266&auto_play=false&hide_related=false&visual=true" style="position:relative; left:-2px; top:90px; width:92%; height:65%; " ></iframe>
+				</div>
+			</div> <!-- end of content -->
+			
+			<div id="light" class="white_content" >
+				<img src="pics/radio1.png" style="left:0; top:0; position:relative; " >
+				<font size="4" > <br><br>
+					The Internet Radio Databse was created in March of 2014 by Steven and Sean for their CSI2132 Database1 project.<br> <br>
+					They're obviously getting an A+ because ...
+					<a href="javascript:void(0)" onclick="document.getElementById('light').style.display='none';document.getElementById('fade').style.display='none'" >
+						<img src="pics/wrong.png" style="width:22px; position:absolute; top:0; right:0; " >
+					</a>
+				</font>
+			</div> <!-- popup info end -->
+			<div id="light2" class="white_content2" ><br>
+				<div id="loginT" >
+					<div id="login_info" >Sign in!</div>
+				</div>
+				<form method="POST" action="" >			
+					<div style="font-size:80%; padding:5px; " >Username:  					<br>
+						<input type="text" name="username" id="username" autocapitalize="off" autocorrect="off" style="width:80%; " />	<br>
+						Password:						<br>
+						<input type="password" name="password" id="password" style="width:80%; " /></div>
+						<input type="submit" value="Login" name="Login" autocapitalize="off" autocorrect="off" id="loginB" />	
+						<div style="text-align:left; font-size:45%; color:#000000; " >  <br>
+							Don't have an account? <a href="register.php" >Sign up!</a> 
+						</div>	
+					</form>	
+					<a href="javascript:void(0)" onclick="document.getElementById('light2').style.display='none';document.getElementById('fade').style.display='none'" >
+						<img src="pics/wrong.png" style="width:22px; position:absolute; top:0; right:0; " >
+					</a>
+				</div> <!-- popup info end -->
+			<div id="fade" class="black_overlay" ></div>
+			<!-- <div id="rightcolumn" ></div>  -->
+			
+		</div> <!-- End of wrapper div -->
+		<div id="footer" >
+			<div style="padding:5px; " >
+				<font size="2" >
+					<a href="#top" > <font color="grey" > Back to top </font></a> <br>
+					Copyright 2013-2014 Sean Floyd. All rights reserved. </font> </div>
+		</div> <!-- End of Footer -->
+	
+</body></html>

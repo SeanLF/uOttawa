@@ -1,0 +1,95 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    
+    <body>
+
+     <ui:composition template="./template.xhtml">
+
+      <ui:define name="content">
+        <h1>Project Information</h1>
+        <f:view>
+            <h:form prependId="false">
+                <h:panelGrid columns="3">
+                    <h:outputText value="Project Id"></h:outputText>
+                    <h:inputText id="id" value="#{projectData.project_id}" required="true" requiredMessage="Please enter a project Id">
+                        <f:validator validatorId="numberValidator"/>
+                    </h:inputText>
+                    <h:message id="idMsg" for="id" errorStyle="color:red; display:block"/>
+                    
+                    <h:outputText value="Project Name"></h:outputText>
+                    <h:inputText id="name" value="#{projectData.name}" required="true" requiredMessage="Please enter a project Name">
+                    </h:inputText>
+                    <h:message id="nameMsg" for="name" errorStyle="color:red; display:block" styleClass="errorMessage"/>
+                    
+                    <h:outputText value="Start Date"></h:outputText>
+                    <h:inputText id="startdate" value="#{projectData.startdate}" 
+                                 required="true" 
+                                 requiredMessage="Please enter a start date">
+                        <f:validator validatorId="dateValidator"/>
+                    </h:inputText>
+                    <h:message id="startdateMsg" for="startdate" errorStyle="color:red; display:block" styleClass="errorMessage"/>
+                    
+                    <h:outputText value="Scheduled Duration"></h:outputText>
+                    <h:inputText id="duration" value="#{projectData.duration}" 
+                                 required="true" 
+                                 requiredMessage="Please enter a duration">
+                        <f:validator validatorId="numberValidator"/>
+                    </h:inputText>
+                    <h:message id="durationMsg" for="duration" errorStyle="color:red; display:block" styleClass="errorMessage"/>
+                    
+                    <h:outputText value="Status"></h:outputText>
+                    <h:selectOneMenu id="pstatus" value="#{projectData.status}" 
+                                 required="true" 
+                                 requiredMessage="Please enter a status">
+                        <f:selectItem id="item1" itemLabel="On Hold" itemValue="On Hold" />
+                        <f:selectItem id="item2" itemLabel="Complete" itemValue="Complete" />
+                        <f:selectItem id="item3" itemLabel="Cancelled" itemValue="Cancelled" />
+                        <f:selectItem id="item4" itemLabel="In Progress" itemValue="In Progress" />
+                    </h:selectOneMenu>
+                    <h:message id="statusMsg" for="pstatus" errorStyle="color:red; display:block" styleClass="errorMessage"/>
+                    
+                    <h:outputText value="Participant Employees"></h:outputText>
+                    <h:selectManyListbox id="participant" value="#{projectData.participantEmps}"
+                                         required ="true"
+                                         requiredMessage="Please select the employees that work on this project.">
+                        <f:selectItems value="#{projectData.employeeList}"  />
+                    </h:selectManyListbox>
+                    <h:message id="participantMsg" for="participant" errorStyle="color:red; display:block" styleClass="errorMessage"/>
+                    
+                    <h:outputText value="Lead Employee"></h:outputText>
+                    <h:selectOneMenu id="lead" value="#{projectData.lead}" 
+                                 required="true" 
+                                 requiredMessage="Please select a project leader.">
+                        <f:selectItems value="#{projectData.employeeList}" />
+                    </h:selectOneMenu>
+                    <h:message id="leadMsg" for="lead" errorStyle="color:red; display:block" styleClass="errorMessage"/>
+                    
+                    <h:inputHidden id="allEmps"></h:inputHidden>
+                    
+                </h:panelGrid>
+                
+                
+                <h:commandButton value="Add" type="command"  actionListener="#{lookupControl.addProject}">
+                   <f:ajax execute="id name startdate duration pstatus lead participant" 
+                           render="status idMsg nameMsg startdateMsg durationMsg statusMsg participantMsg leadMsg"/>
+                </h:commandButton>
+                
+                <h:commandButton value="Cancel" type="reset" />
+                
+                <div>
+                    <hr/>
+                    <hr/>
+                <h:outputText  style="color:royalblue; font-size: large; font-weight: bold" id="status" value="#{projectData.addstatus}"/>
+                </div>
+            </h:form>
+        </f:view>
+      </ui:define>
+
+    </ui:composition>
+
+    </body>
+</html>

@@ -1,0 +1,109 @@
+P -> T												GOTO
+T -> T ; M
+T -> M
+M -> if b then M else M
+M -> s
+M -> {T}
+
+W0 {P' -> P}
+Closure(P')
+{
+	P' -> .P										1
+	P -> .T											2
+	T -> .T;M										2
+	T -> .M											3
+	M -> .if b then M else M						4
+	M -> .s											5
+	M -> .{T}										6
+}
+
+W1
+{
+	P' -> P.										
+}
+
+W2
+{
+	P -> T.											
+	T -> T.;M										7
+}
+
+W3
+{
+	T -> M.
+}
+
+W4
+{
+	if.b then M else M								8
+}
+
+W5
+{
+	s.
+}
+
+W6
+{
+	M -> {.T}										9
+	T -> .T;M										2
+	T -> .M											3
+	M -> .if b then M else M						4
+	M -> .s											5
+	M -> .{T}										6
+}
+
+W7
+{
+	T -> T;.M										10
+	M -> .if b then M else M						4
+	M -> .s											5
+	M -> .{M}										6
+}
+
+W8
+{
+	M -> if b .then M else M						11
+}
+
+W9
+{
+	M -> {T.}										12
+	T -> T.;M										7
+}
+
+W10
+{
+	T -> T;M.						
+}
+
+W11
+{
+	if b then .M else M								13
+	M -> .if b then M else M						4
+	M -> .s											5
+	M -> .{T}										6
+}
+
+W12
+{
+	M -> {T}.
+}
+
+W13
+{
+	if b then M .else M								14
+}
+
+W14
+{
+	if b then M else.M								15
+	M -> .if b then M else M						4
+	M -> .s											5
+	M -> .{T}										6
+}
+
+W15
+{
+	if b then M else M.
+}

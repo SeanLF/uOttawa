@@ -1,0 +1,43 @@
+http://cruise.eecs.uottawa.ca/umpleonline/umple.php?model=131107872539
+
+class Server {
+  Integer port;
+  String host;
+  1 -- 1 ServerConsole;
+  isA AbstractServer;
+}
+
+class Email{
+  String title;
+  String content;
+  Date date;
+  * -- 1..* Client;
+}
+
+class Client {
+  String name;
+  String loginID;
+  1 -- 2 Mailbox;
+  * -- 1 Server;
+  1 -- 1 ClientConsole;
+  isA AbstractClient;
+}
+
+class Mailbox{
+  
+  1..* -- * Email;
+}
+
+class Inbox{  isA Mailbox;
+}
+class Outbox{  isA Mailbox;
+}
+
+class ServerConsole{isA GUI;}
+class ClientConsole{isA GUI;}
+class GUI{ isA JFrame;
+         isA ActionListener;}
+class AbstractServer{}
+class AbstractClient{}
+interface ActionListener{}
+class JFrame{}

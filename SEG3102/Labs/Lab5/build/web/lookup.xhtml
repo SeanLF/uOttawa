@@ -1,0 +1,77 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <body>
+
+        <ui:composition template="./template.xhtml">
+
+         <ui:define name="content">
+           <f:view>
+            <h:form prependId="false">
+                <h1>Enter Lookup Criteria</h1>
+                <h:panelGrid columns="6">
+                    <h:outputLabel value="Project Name"></h:outputLabel>
+                    <h:inputText id="name" value="#{projectData.name}"></h:inputText>
+                </h:panelGrid>
+                <h:commandButton value="Lookup" type="command" actionListener="#{lookupControl.lookupProject}">
+                    <f:ajax execute="name" render="results empResults"/>
+                </h:commandButton>
+                <h:commandButton value="Cancel" type="reset" />
+                
+                <div>
+                    <hr/>
+                    
+                <h:panelGroup id="results">
+                    <h:dataTable  rendered="#{projectData.showResults}" border="2" bgcolor="yellow" id="resultTable" value="#{projectData.lookupResults}" var="p">
+                    <h:column>
+                        <f:facet name="header">Project Name</f:facet>
+                        #{p.NAME}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Start Date</f:facet>
+                        #{p.STARTDATE}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Duration</f:facet>
+                        #{p.DURATION}
+                    </h:column>
+                        <h:column>
+                        <f:facet name="header">Status</f:facet>
+                        #{p.STATUS}
+                    </h:column>
+                        <h:column>
+                        <f:facet name="header">Lead Employee</f:facet>
+                        #{projectData.lead}
+                    </h:column>
+                    </h:dataTable>
+                    <h:outputText rendered="#{projectData.showMessage}" style="color:red" id="resultMessage" value="No Employee Found"/>
+                </h:panelGroup>
+                </div>
+                <div>
+                    <hr/>
+                <h:panelGroup id="empResults">
+                    <h:dataTable  rendered="#{empData.showResults}" border="2" bgcolor="yellow" id="resultTableEmps" value="#{empData.lookupResults}" var="emp">
+                    <h:column>
+                        <f:facet name="header">Employee First Name</f:facet>
+                        #{emp.NAME}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Employee Last Name</f:facet>
+                        #{emp.LASTNAME}
+                    </h:column>
+                    </h:dataTable>
+                    <h:outputText rendered="#{empData.showMessage}" style="color:red" id="resultMessageEmps" value="No Employee Found"/>
+                </h:panelGroup>
+                </div>
+            </h:form>
+        </f:view>
+       </ui:define>
+
+     </ui:composition>
+
+    </body>
+</html>
